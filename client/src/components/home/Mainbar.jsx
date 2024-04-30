@@ -4,6 +4,30 @@ import { FormProvider, useForm } from "react-hook-form";
 import { steppersArray } from "../../constants";
 
 function Mainbar({ currentForm, setCurrentForm }) {
+  const generalInfoValues = [
+    "connectivity",
+    "mobileWalletService",
+    "serviceAccessibility",
+    "serviceTerritory",
+  ];
+
+  const validateForm = (obj) => {
+    console.log("Obj: ", obj);
+
+    if (currentForm === 0) {
+      let flag = true;
+      for (let i = 0; i < generalInfoValues.length; i++) {
+        let val = obj[generalInfoValues[i]];
+        if (!val || val.length < 1) {
+          flag = false;
+        }
+      }
+
+      if (!flag) return false;
+    }
+    return true;
+  };
+
   const methods = useForm();
 
   const handleBack = (e) => {
@@ -21,6 +45,13 @@ function Mainbar({ currentForm, setCurrentForm }) {
   const handleContinue = (e) => {
     e.preventDefault();
     methods.trigger();
+    const validated = validateForm(methods.getValues());
+
+    if (validated) {
+      if (currentForm < steppersArray.length - 1) {
+        setCurrentForm((prev) => prev + 1);
+      }
+    }
   };
 
   return (

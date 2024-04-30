@@ -6,7 +6,7 @@ function Home() {
   const [currentForm, setCurrentForm] = useState(0);
 
   return (
-    <main className="">
+    <main className="relative flex">
       <Sidebar currentForm={currentForm} />
 
       <Mainbar currentForm={currentForm} setCurrentForm={setCurrentForm} />

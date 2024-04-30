@@ -24,29 +24,44 @@ function Mainbar({ currentForm, setCurrentForm }) {
   };
 
   return (
-    <div className="">
-      <h2 className="">{steppersArray[currentForm].heading}</h2>
+    <div className="main-margin w-full h-[calc(100vh-90px)] overflow-y-scroll">
+      <h2 className="h-form-heading-height text-2xl text-blue-289">
+        {steppersArray[currentForm].heading}
+      </h2>
 
       {/* form component */}
-      <div className="">
+      <div className="my-main-margin-y w-[70%]">
         <FormProvider {...methods}>
           <form method="POST" className="">
             {steppersArray[currentForm].component}
 
             {/* nav buttons */}
-            <div className="">
+            <div className="absolute bottom-[3%] right-[3%] flex gap-2 items-center">
               {currentForm > 0 && (
-                <button type="button" onClick={handleBack}>
+                <button
+                  type="button"
+                  className="text-grey-4 border-none outline-none py-1.5 px-4 bg-transparent"
+                  onClick={handleBack}
+                >
                   <KeyboardBackspace /> Back
                 </button>
               )}
 
               {currentForm === steppersArray.length - 1 ? (
-                <button type="submit" onClick={handleConfirm}>
+                <button
+                  type="submit"
+                  className="border-none outline-none py-1.5 bg-transparent text-white bg-primary-blue rounded-2xl px-8"
+                  onClick={handleConfirm}
+                >
                   Confirm
                 </button>
               ) : (
-                <button onClick={handleContinue}>Continue</button>
+                <button
+                  className="border-none outline-none py-1.5 text-white bg-primary-blue rounded-2xl px-8"
+                  onClick={handleContinue}
+                >
+                  Continue
+                </button>
               )}
             </div>
           </form>

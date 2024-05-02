@@ -16,9 +16,9 @@ function Sidebar({ currentForm }) {
           className={`font-medium flex items-center gap-2 ${
             step.id && "text-primary-blue"
           } ${
-            step.id === currentForm
+            step.id === currentForm + 1
               ? "text-primary-blue"
-              : step.id < currentForm
+              : step.id < currentForm + 1
               ? "text-primary-green"
               : "text-grey-4"
           }`}
@@ -26,18 +26,18 @@ function Sidebar({ currentForm }) {
         >
           {/* step-icon */}
           <div className="">
-            {step.id === currentForm ? (
+            {step.id === currentForm + 1 ? (
               <RadioButtonChecked
                 fontSize="small"
                 sx={{
                   width: "16px",
                 }}
               />
-            ) : step.id < currentForm ? (
+            ) : step.id < currentForm + 1 ? (
               <Check
                 fontSize="small"
                 sx={{
-                  width: "8px",
+                  width: "16px",
                 }}
               />
             ) : (

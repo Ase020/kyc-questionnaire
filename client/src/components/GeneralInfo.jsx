@@ -23,7 +23,7 @@ function GeneralInfo() {
   } = useFormContext();
 
   return (
-    <div className="">
+    <div className="my-4 flex flex-col row-y-6">
       <GrayBackgroundText text="General Information" />
       <Grid container spacing={2}>
         {/* connectivity */}

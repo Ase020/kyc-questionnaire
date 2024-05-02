@@ -3,7 +3,6 @@ import {
   FormControlLabel,
   FormHelperText,
   FormLabel,
-  InputLabel,
   Radio,
   RadioGroup,
   TextField,

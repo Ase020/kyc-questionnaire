@@ -81,7 +81,7 @@ function Mainbar({ currentForm, setCurrentForm }) {
               {currentForm === steppersArray.length - 1 ? (
                 <button
                   type="submit"
-                  className="border-none outline-none py-1.5 bg-transparent text-white bg-primary-blue rounded-2xl px-8"
+                  className="border-none outline-none py-1.5 text-white bg-primary-blue rounded-2xl px-8"
                   onClick={handleConfirm}
                 >
                   Confirm

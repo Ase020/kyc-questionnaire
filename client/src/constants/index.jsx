@@ -4,6 +4,8 @@ import {
   KYCProcedures,
   MobileWallet,
   Monitoring,
+  Review,
+  Signature,
 } from "../components";
 
 export const steppersArray = [
@@ -36,5 +38,17 @@ export const steppersArray = [
     name: "Monitoring",
     heading: "Monitoring",
     component: <Monitoring />,
+  },
+  {
+    id: 6,
+    name: "Signature",
+    heading: "Authorization",
+    component: <Signature />,
+  },
+  {
+    id: 7,
+    name: "Review",
+    heading: "Review",
+    component: <Review />,
   },
 ];

@@ -7,5 +7,11 @@ export { default as MobileWallet } from "./MobileWallet";
 export { default as Monitoring } from "./Monitoring";
 export { default as Review } from "./Review";
 export { default as Signature } from "./Signature";
+
 export { default as Mainbar } from "./home/Mainbar";
 export { default as Sidebar } from "./home/Sidebar";
+
+export { default as AMLReviewSection } from "./_review/AMLReviewSection";
+export { default as GenInfoSection } from "./_review/GenInfoSection";
+export { default as KYCProceduresSection } from "./_review/KYCProceduresSection";
+export { default as MobileWalletSection } from "./_review/MobileWalletSection";

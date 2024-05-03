@@ -15,3 +15,5 @@ export { default as AMLReviewSection } from "./_review/AMLReviewSection";
 export { default as GenInfoSection } from "./_review/GenInfoSection";
 export { default as KYCProceduresSection } from "./_review/KYCProceduresSection";
 export { default as MobileWalletSection } from "./_review/MobileWalletSection";
+export { default as MonitoringReview } from "./_review/MonitoringReview";
+export { default as SignatureSection } from "./_review/SignatureSection";

@@ -1,10 +1,12 @@
 import { useFormContext } from "react-hook-form";
+
 import GrayBackgroundText from "./GrayBackgroundText";
-import { Chip, Divider, Grid, Stack } from "@mui/material";
 import GenInfoSection from "./_review/GenInfoSection";
 import AMLReviewSection from "./_review/AMLReviewSection";
 import KYCProceduresSection from "./_review/KYCProceduresSection";
 import MobileWalletSection from "./_review/MobileWalletSection";
+import MonitoringReview from "./_review/MonitoringReview";
+import SignatureSection from "./_review/SignatureSection";
 
 function Review() {
   const { getValues } = useFormContext();
@@ -28,6 +30,8 @@ function Review() {
         <AMLReviewSection />
         <KYCProceduresSection />
         <MobileWalletSection />
+        <MonitoringReview />
+        <SignatureSection />
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ import htmlText from "../utils/htmlText";
 import OrangeBackgroundText from "./OrangeBackgroundText";
 
 function KYCProcedures() {
-  const [needToRegister, setNeedToRegister] = useState("");
+  const [customerRegistered, setCustomerRegistered] = useState("");
   const [customerKYC, setCustomerKYC] = useState("");
   const [online, setOnline] = useState("");
   const [customerType, setCustomerType] = useState("");
@@ -39,18 +39,20 @@ function KYCProcedures() {
           </FormLabel>
 
           <Controller
-            name="needToRegister"
+            name="customerRegistered"
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setNeedToRegister(event.target.value)}
+                  onChange={(event) =>
+                    setCustomerRegistered(event.target.value)
+                  }
                   label="Does the customer need to be registered to use Mobile Wallet?"
                   {...field}
-                  error={Boolean(errors?.needToRegister)}
-                  onBlur={() => trigger("needToRegister")}
+                  error={Boolean(errors?.customerRegistered)}
+                  onBlur={() => trigger("customerRegistered")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -66,8 +68,8 @@ function KYCProcedures() {
                   </div>
                 </RadioGroup>
 
-                {errors?.needToRegister?.message && (
-                  <FormHelperText error={Boolean(errors?.needToRegister)}>
+                {errors?.customerRegistered?.message && (
+                  <FormHelperText error={Boolean(errors?.customerRegistered)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -83,10 +85,10 @@ function KYCProcedures() {
             Customer KYC be performed:
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="performKYC"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -97,11 +99,11 @@ function KYCProcedures() {
                   size="small"
                   sx={{ marginBottom: 0 }}
                   {...field}
-                  error={Boolean(errors?.customerKYC)}
-                  onBlur={() => trigger("customerKYC")}
+                  error={Boolean(errors?.performKYC)}
+                  onBlur={() => trigger("performKYC")}
                 />
-                {errors?.customerKYC?.message && (
-                  <FormHelperText error={Boolean(errors?.customerKYC)}>
+                {errors?.performKYC?.message && (
+                  <FormHelperText error={Boolean(errors?.performKYC)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -117,10 +119,10 @@ function KYCProcedures() {
             documents required to register a customer:
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="kYCDescription"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -131,11 +133,11 @@ function KYCProcedures() {
                   size="small"
                   sx={{ marginBottom: 0 }}
                   {...field}
-                  error={Boolean(errors?.customerKYC)}
-                  onBlur={() => trigger("customerKYC")}
+                  error={Boolean(errors?.kYCDescription)}
+                  onBlur={() => trigger("kYCDescription")}
                 />
-                {errors?.customerKYC?.message && (
-                  <FormHelperText error={Boolean(errors?.customerKYC)}>
+                {errors?.kYCDescription?.message && (
+                  <FormHelperText error={Boolean(errors?.kYCDescription)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -193,7 +195,7 @@ function KYCProcedures() {
             diligence process in place:
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="dueDiligence"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
             render={({ field, fieldState }) => (
@@ -207,11 +209,11 @@ function KYCProcedures() {
                   size="small"
                   sx={{ marginBottom: 0 }}
                   {...field}
-                  error={Boolean(errors?.customerKYC)}
-                  onBlur={() => trigger("customerKYC")}
+                  error={Boolean(errors?.dueDiligence)}
+                  onBlur={() => trigger("dueDiligence")}
                 />
-                {errors?.customerKYC?.message && (
-                  <FormHelperText error={Boolean(errors?.customerKYC)}>
+                {errors?.dueDiligence?.message && (
+                  <FormHelperText error={Boolean(errors?.dueDiligence)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}

@@ -1,6 +1,9 @@
+import { useFormContext } from "react-hook-form";
+
 import { Divider, Grid, Stack } from "@mui/material";
 
 const MobileWalletSection = () => {
+  const { getValues } = useFormContext();
   return (
     <>
       <Divider textAlign="left">MOBILE WALLET CHARACTERISTICS</Divider>
@@ -13,13 +16,7 @@ const MobileWalletSection = () => {
                 1. Please describe the procedure to logging into the Mobile
                 wallet in order to send a transaction: (If applicable)
               </h3>
-              <span className="italic">
-                Registration with the Financial Intelligence Unit (Financial
-                Reporting Center - Kenya), Appointment of a Money Laundering
-                Reporting Officer (MLRO), Reporting of Suspicious Transactions
-                to the FRC, Reporting of large cash transactions (USD 15,000) to
-                the FRC
-              </span>
+              <span className="italic">{getValues().loginProcedureSend}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -33,11 +30,7 @@ const MobileWalletSection = () => {
                 wallet in order receive a transaction: (If applicable)
               </h3>
               <span className="italic">
-                Registration with the Financial Intelligence Unit (Financial
-                Reporting Center - Kenya), Appointment of a Money Laundering
-                Reporting Officer (MLRO), Reporting of Suspicious Transactions
-                to the FRC, Reporting of large cash transactions (USD 15,000) to
-                the FRC
+                {getValues().loginProcedureReceive}
               </span>
             </Stack>
           </Grid>
@@ -51,12 +44,7 @@ const MobileWalletSection = () => {
                 3. How would the account holder know that the funds have been
                 withdrawn from his/her account? (In case of sending)
               </h3>
-              <span className="italic">
-                A confirmation message will be sent to the account holder&apos;s
-                handset upon finalization of the transaction. The customer can
-                also view the account statement through a prompt in the wallet
-                menu.
-              </span>
+              <span className="italic">{getValues().fundsWithdrawn}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -69,12 +57,7 @@ const MobileWalletSection = () => {
                 4. How would the account holder know that the funds have been
                 deposited to his/her account? (In case of paying)
               </h3>
-              <span className="italic">
-                A confirmation message will be sent to the account holder&apos;s
-                handset upon finalization of the transaction. The customer can
-                also view the account statement through a prompt in the wallet
-                menu.
-              </span>
+              <span className="italic">{getValues().fundsDeposited}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -88,9 +71,7 @@ const MobileWalletSection = () => {
                 beneficiary&apos;s/sender Identification is still valid (not
                 expired)?
               </h3>
-              <span className="italic">
-                Kenyan national identity cards do not expire.
-              </span>
+              <span className="italic">{getValues().verifyBeneficiaryId}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -103,10 +84,7 @@ const MobileWalletSection = () => {
                 6. Has the customer an option to print receipt when receive/send
                 a transaction with Ria via Mobile Wallet?
               </h3>
-              <span className="italic">
-                The customer receives a text message to their personal handset.,
-                Reporting of large cash transactions (USD 15,000) to the FRC
-              </span>
+              <span className="italic">{getValues().printReceipt}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -120,7 +98,7 @@ const MobileWalletSection = () => {
                 payment has been desposited to the Mobile Wallet? (In case of
                 paying)
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().proofOfPayment}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -134,7 +112,7 @@ const MobileWalletSection = () => {
                 documents provided? For how long are records retained in the
                 system?
               </h3>
-              <span className="italic">7 years</span>
+              <span className="italic">{getValues().recordRetention}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -148,10 +126,7 @@ const MobileWalletSection = () => {
                 number? Is there any external/internal source to verify the
                 phone number?
               </h3>
-              <span className="italic">
-                Airtel Money is an e-money issuer which includes issuance of
-                mobile money wallets.
-              </span>
+              <span className="italic">{getValues().verifyPhoneValidity}</span>
             </Stack>
           </Grid>
         </Grid>

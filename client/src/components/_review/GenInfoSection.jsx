@@ -1,6 +1,9 @@
+import { useFormContext } from "react-hook-form";
+
 import { Divider, Grid, Stack } from "@mui/material";
 
 const GenInfoSection = () => {
+  const { getValues } = useFormContext();
   return (
     <>
       <Divider textAlign="left">GENERAL INFORMATION</Divider>
@@ -12,7 +15,7 @@ const GenInfoSection = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 Connectivity
               </h3>
-              <span className="italic">FxOnline</span>
+              <span className="italic">{getValues().connectivity}</span>
             </Stack>
           </Grid>
 
@@ -21,7 +24,7 @@ const GenInfoSection = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 Mobile Wallet Service
               </h3>
-              <span className="italic">Sending</span>
+              <span className="italic">{getValues().mobileWalletService}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -34,9 +37,7 @@ const GenInfoSection = () => {
                 the customer be able to perform the transaction at a physical
                 location as well?
               </h3>
-              <span className="italic">
-                NO. The service will be offered through mobile payments
-              </span>
+              <span className="italic">{getValues().serviceAccessibility}</span>
             </Stack>
           </Grid>
 
@@ -48,10 +49,7 @@ const GenInfoSection = () => {
                 correspondent’s registered country or also outside it? Can the
                 customer initiate a transaction while out of the territory?
               </h3>
-              <span className="italic">
-                No. Airtel Money mobile payments service is set-up to be
-                available within the territory of Kenya
-              </span>
+              <span className="italic">{getValues().serviceTerritory}</span>
             </Stack>
           </Grid>
         </Grid>

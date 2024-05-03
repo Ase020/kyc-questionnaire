@@ -1,6 +1,9 @@
+import { useFormContext } from "react-hook-form";
+
 import { Divider, Grid, Stack } from "@mui/material";
 
 const SignatureSection = () => {
+  const { getValues } = useFormContext();
   return (
     <>
       <Divider textAlign="left">AUTHORIZATION</Divider>
@@ -12,7 +15,7 @@ const SignatureSection = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 Name and Title of the signatory
               </h3>
-              <span className="italic">Felix Nyalenda Olali</span>
+              <span className="italic">{getValues().name}</span>
             </Stack>
           </Grid>
         </Grid>

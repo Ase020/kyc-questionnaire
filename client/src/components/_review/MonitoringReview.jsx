@@ -1,6 +1,9 @@
+import { useFormContext } from "react-hook-form";
+
 import { Divider, Grid, Stack } from "@mui/material";
 
 const MonitoringReview = () => {
+  const { getValues } = useFormContext();
   return (
     <>
       <Divider textAlign="left">MONITORING</Divider>
@@ -13,7 +16,7 @@ const MonitoringReview = () => {
                 1. Does the Correspondent have any Compliance/watch filters
                 specifically established for Mobile Wallet?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().complianceFilters}</span>
             </Stack>
           </Grid>
 
@@ -23,9 +26,7 @@ const MonitoringReview = () => {
                 If YES, describe them:
               </h3>
               <span className="italic">
-                Generally the filters have been set to assess suspicion in large
-                transactions (including based on limits), filters based on
-                frequency as well as other behavioral patterns.
+                {getValues().complianceFiltersDesc}
               </span>
             </Stack>
           </Grid>
@@ -39,7 +40,7 @@ const MonitoringReview = () => {
                 2. Does the Correspondent have amount limits per
                 customer/day/month?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().amountLimit}</span>
             </Stack>
           </Grid>
 
@@ -48,10 +49,7 @@ const MonitoringReview = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 If YES, please specify the limits for payout/sending/both:
               </h3>
-              <span className="italic">
-                Transaction limit of Ksh 250,000; Wallet holding limit of Ksh
-                500,000
-              </span>
+              <span className="italic">{getValues().amountLimitAmt}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -64,7 +62,7 @@ const MonitoringReview = () => {
                 3. Are the limits for paying/sending through Mobile Wallet
                 different from those for cash transactions? (If Applicable)
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().limitDiffer}</span>
             </Stack>
           </Grid>
 
@@ -73,11 +71,7 @@ const MonitoringReview = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 If YES, please specify:
               </h3>
-              <span className="italic">
-                Generally the filters have been set to assess suspicion in large
-                transactions (including based on limits), filters based on
-                frequency as well as other behavioral patterns.
-              </span>
+              <span className="italic">{getValues().limitDifferDesc}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -90,7 +84,9 @@ const MonitoringReview = () => {
                 4. Does the customer have any limitation on number of
                 beneficiaries or countries to be sent to?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">
+                {getValues().limitationOfBeneficiaries}
+              </span>
             </Stack>
           </Grid>
 
@@ -100,9 +96,7 @@ const MonitoringReview = () => {
                 If YES, please specify:
               </h3>
               <span className="italic">
-                Generally the filters have been set to assess suspicion in large
-                transactions (including based on limits), filters based on
-                frequency as well as other behavioral patterns.
+                {getValues().limitationOfBeneficiariesDesc}
               </span>
             </Stack>
           </Grid>
@@ -116,7 +110,7 @@ const MonitoringReview = () => {
                 5. Does the Correspondent any limitation on the number of Mobile
                 Wallet accounts per customer?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().limitationOfWallet}</span>
             </Stack>
           </Grid>
 
@@ -126,9 +120,7 @@ const MonitoringReview = () => {
                 If YES, please specify:
               </h3>
               <span className="italic">
-                Generally the filters have been set to assess suspicion in large
-                transactions (including based on limits), filters based on
-                frequency as well as other behavioral patterns.
+                {getValues().limitationOfWalletDesc}
               </span>
             </Stack>
           </Grid>
@@ -141,7 +133,7 @@ const MonitoringReview = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 6. Does the Correspondent have a screening process in place?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().screeningProcess}</span>
             </Stack>
           </Grid>
 
@@ -151,13 +143,7 @@ const MonitoringReview = () => {
                 If YES, how does the correspondent manage any potential matches?
                 (Transaction rejected/On Hold/...):
               </h3>
-              <span className="italic">
-                Upon the potential match, the transaction is held in pending
-                state. The potential match is then reviewed vis-a-vis the
-                database records to assess validity. False alerts are released,
-                true hits are escalated for Senior Management approval to
-                onboard PEPs or RCAs and Sanctioned persons blocked & reported.
-              </span>
+              <span className="italic">{getValues().potentialMatchMgt}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -169,7 +155,7 @@ const MonitoringReview = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 7. Will correspondent run real time verification filters?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().realtimeFilters}</span>
             </Stack>
           </Grid>
 
@@ -178,11 +164,7 @@ const MonitoringReview = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 If YES, please specify:
               </h3>
-              <span className="italic">
-                Generally the filters have been set to assess suspicion in large
-                transactions (including based on limits), filters based on
-                frequency as well as other behavioral patterns.
-              </span>
+              <span className="italic">{getValues().realtimeFiltersDesc}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -196,7 +178,9 @@ const MonitoringReview = () => {
                 identify suspicious patterns on transactions performed Yes No
                 through Mobile Wallet?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">
+                {getValues().postTransactionalAnalysis}
+              </span>
             </Stack>
           </Grid>
 
@@ -206,10 +190,7 @@ const MonitoringReview = () => {
                 If YES, please specify:
               </h3>
               <span className="italic">
-                Transaction monitoring is done through the SAS AML monitoring
-                system which has thresholds to assess suspicion based on
-                pre-defined thresholds including large, frequent or other
-                behavioural suspicious patterns including based on limits
+                {getValues().postTransactionalAnalysisDesc}
               </span>
             </Stack>
           </Grid>
@@ -223,10 +204,7 @@ const MonitoringReview = () => {
                 9. What type of monitoring and verification is performed for
                 account holders?
               </h3>
-              <span className="italic">
-                Monitoring is as noted under 8 above and verification is as
-                noted under &quot;KYC for customers&quot; 5 above.
-              </span>
+              <span className="italic">{getValues().typeOfMonitoring}</span>
             </Stack>
           </Grid>
         </Grid>

@@ -2,30 +2,109 @@
 import { KeyboardBackspace } from "@mui/icons-material";
 import { FormProvider, useForm } from "react-hook-form";
 import { steppersArray } from "../../constants";
+import {
+  aMLRegulation,
+  authorization,
+  generalInfoValues,
+  kYCProcedures,
+  mobileWalletCharacteristics,
+  monitoring,
+} from "../../utils/selectValues";
 
 function Mainbar({ currentForm, setCurrentForm }) {
-  const generalInfoValues = [
-    "connectivity",
-    "mobileWalletService",
-    "serviceAccessibility",
-    "serviceTerritory",
-  ];
+  // const validateForm = (obj) => {
+  //   console.log("Obj: ", obj);
+
+  //   if (currentForm === 0) {
+  //     let flag = true;
+  //     for (let i = 0; i < generalInfoValues.length; i++) {
+  //       let val = obj[generalInfoValues[i]];
+  //       if (!val || val.length < 1) {
+  //         flag = false;
+  //       }
+  //     }
+
+  //     if (!flag) return false;
+  //   } else if (currentForm === 1) {
+  //     let flag = true;
+  //     for (let i = 0; i < aMLRegulation.length; i++) {
+  //       let val = obj[aMLRegulation[i]];
+  //       if (!val || val.length < 1) {
+  //         flag = false;
+  //       }
+  //     }
+
+  //     if (!flag) return false;
+  //   } else if (currentForm === 2) {
+  //     let flag = true;
+  //     for (let i = 0; i < kYCProcedures.length; i++) {
+  //       let val = obj[kYCProcedures[i]];
+  //       if (!val || val.length < 1) {
+  //         flag = false;
+  //       }
+  //     }
+
+  //     if (!flag) return false;
+  //   }
+  //   return true;
+  // };
 
   const validateForm = (obj) => {
-    console.log("Obj: ", obj);
-
-    if (currentForm === 0) {
-      let flag = true;
-      for (let i = 0; i < generalInfoValues.length; i++) {
-        let val = obj[generalInfoValues[i]];
-        if (!val || val.length < 1) {
-          flag = false;
+    console.log(obj);
+    let flag = true;
+    switch (currentForm) {
+      case 0:
+        for (let i = 0; i < generalInfoValues.length; i++) {
+          let val = obj[generalInfoValues[i]];
+          if (!val || val.length < 1) {
+            flag = false;
+          }
         }
-      }
-
-      if (!flag) return false;
+        break;
+      case 1:
+        for (let i = 0; i < aMLRegulation.length; i++) {
+          let val = obj[aMLRegulation[i]];
+          if (!val || val.length < 1) {
+            flag = false;
+          }
+        }
+        break;
+      case 2:
+        for (let i = 0; i < kYCProcedures.length; i++) {
+          let val = obj[kYCProcedures[i]];
+          if (!val || val.length < 1) {
+            flag = false;
+          }
+        }
+        break;
+      case 3:
+        for (let i = 0; i < mobileWalletCharacteristics.length; i++) {
+          let val = obj[mobileWalletCharacteristics[i]];
+          if (!val || val.length < 1) {
+            flag = false;
+          }
+        }
+        break;
+      case 4:
+        for (let i = 0; i < monitoring.length; i++) {
+          let val = obj[monitoring[i]];
+          if (!val || val.length < 1) {
+            flag = false;
+          }
+        }
+        break;
+      case 5:
+        for (let i = 0; i < authorization.length; i++) {
+          let val = obj[authorization[i]];
+          if (!val || val.length < 1) {
+            flag = false;
+          }
+        }
+        break;
+      default:
+        break;
     }
-    return true;
+    return flag;
   };
 
   const methods = useForm();

@@ -19,7 +19,6 @@ function AMLAndRegulations() {
   const [license, setLicense] = useState("");
   const [otherLicense, setOtherLicense] = useState("");
   const [reportingObligation, setReportingObligation] = useState("");
-  const [requirementDesc, setRequirementDesc] = useState("");
 
   const {
     control,
@@ -42,7 +41,7 @@ function AMLAndRegulations() {
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
                   onChange={(event) => setSeparateAMLPolicy(event.target.value)}
@@ -87,7 +86,7 @@ function AMLAndRegulations() {
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
                   onChange={(event) => setPolicyProvided(event.target.value)}
@@ -132,7 +131,7 @@ function AMLAndRegulations() {
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
                   onChange={(event) => setPeriodicReview(event.target.value)}
@@ -171,11 +170,12 @@ function AMLAndRegulations() {
             If <span className="font-semibold">Yes</span>, please indicate how
             often:
           </FormLabel>
+
           <Controller
             name="howOften"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -184,11 +184,12 @@ function AMLAndRegulations() {
                   fullWidth
                   margin="normal"
                   size="small"
-                  sx={{ marginBottom: 0 }}
+                  sx={{ marginBottom: "16px" }}
                   {...field}
                   error={Boolean(errors?.howOften)}
                   onBlur={() => trigger("howOften")}
                 />
+
                 {errors?.howOften?.message && (
                   <FormHelperText error={Boolean(errors?.howOften)}>
                     {htmlText.thisFieldIsRequired}
@@ -211,7 +212,7 @@ function AMLAndRegulations() {
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
                   onChange={(event) => setLicense(event.target.value)}
@@ -247,11 +248,12 @@ function AMLAndRegulations() {
         {/* 6 */}
         <FormControl fullWidth size="small" required id="outlined-helperText">
           <FormLabel>Please specify the type of license:</FormLabel>
+
           <Controller
             name="licenseType"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -260,7 +262,7 @@ function AMLAndRegulations() {
                   fullWidth
                   margin="normal"
                   size="small"
-                  sx={{ marginBottom: 0 }}
+                  sx={{ marginBottom: "16px" }}
                   {...field}
                   error={Boolean(errors?.licenseType)}
                   onBlur={() => trigger("licenseType")}
@@ -287,7 +289,7 @@ function AMLAndRegulations() {
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
                   onChange={(event) => setOtherLicense(event.target.value)}
@@ -329,7 +331,7 @@ function AMLAndRegulations() {
             name="otherLicenseType"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -365,7 +367,7 @@ function AMLAndRegulations() {
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
                   onChange={(event) =>
@@ -404,10 +406,10 @@ function AMLAndRegulations() {
         <FormControl fullWidth size="small" required id="outlined-helperText">
           <FormLabel>Please describe the requirements below:</FormLabel>
           <Controller
-            name="requirementDesc"
+            name="reportingObligationRequirement"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -418,11 +420,13 @@ function AMLAndRegulations() {
                   size="small"
                   sx={{ marginBottom: 0 }}
                   {...field}
-                  error={Boolean(errors?.requirementDesc)}
-                  onBlur={() => trigger("requirementDesc")}
+                  error={Boolean(errors?.reportingObligationRequirement)}
+                  onBlur={() => trigger("reportingObligationRequirement")}
                 />
-                {errors?.requirementDesc?.message && (
-                  <FormHelperText error={Boolean(errors?.requirementDesc)}>
+                {errors?.reportingObligationRequirement?.message && (
+                  <FormHelperText
+                    error={Boolean(errors?.reportingObligationRequirement)}
+                  >
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}

@@ -1,6 +1,10 @@
+import { useFormContext } from "react-hook-form";
+
 import { Divider, Grid, Stack } from "@mui/material";
 
 const AMLReviewSection = () => {
+  const { getValues } = useFormContext();
+
   return (
     <>
       <Divider textAlign="left">ANTI-MONEY LAUNDERING & REGULATION</Divider>
@@ -14,7 +18,7 @@ const AMLReviewSection = () => {
                 1. Does the correspondent have a separate AML policy in place
                 for the Mobile Wallet?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().separateAMLPolicy}</span>
             </Stack>
           </Grid>
 
@@ -23,7 +27,7 @@ const AMLReviewSection = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 If Yes, has the Correspondent provided the policy?{" "}
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().policyProvided}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -36,7 +40,7 @@ const AMLReviewSection = () => {
                 2. Does the Correspondent conduct a periodic review of the
                 Mobile Wallet’s AML policy?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().periodicReview}</span>
             </Stack>
           </Grid>
 
@@ -45,7 +49,7 @@ const AMLReviewSection = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 If Yes, please indicate how often{" "}
               </h3>
-              <span className="italic">Every 2 years</span>
+              <span className="italic">{getValues().howOften}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -58,7 +62,7 @@ const AMLReviewSection = () => {
                 3. Does the Correspondent’s license allow to operate to conduct
                 transactions using the Mobile Wallet?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().license}</span>
             </Stack>
           </Grid>
 
@@ -67,9 +71,7 @@ const AMLReviewSection = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 Please specify the type of license{" "}
               </h3>
-              <span className="italic">
-                Money Remittance (License international money transfer)
-              </span>
+              <span className="italic">{getValues().licenseType}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -82,7 +84,7 @@ const AMLReviewSection = () => {
                 4. Does the Correspondent have any other license for providing
                 financial services/ other Money transfer services?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().otherLicense}</span>
             </Stack>
           </Grid>
 
@@ -91,9 +93,7 @@ const AMLReviewSection = () => {
               <h3 className="text-sm text-blue-289 font-semibold">
                 If Yes, please specify{" "}
               </h3>
-              <span className="italic">
-                Payments Service Provider (local Money Transfer)
-              </span>
+              <span className="italic">{getValues().otherLicenseType}</span>
             </Stack>
           </Grid>
         </Grid>
@@ -106,7 +106,7 @@ const AMLReviewSection = () => {
                 5. Does the Correspondent have specific AML reporting
                 obligations or regulatory requirements for Mobile Wallet?
               </h3>
-              <span className="italic">Yes</span>
+              <span className="italic">{getValues().reportingObligation}</span>
             </Stack>
           </Grid>
 
@@ -116,11 +116,7 @@ const AMLReviewSection = () => {
                 Please describe the requirements below{" "}
               </h3>
               <span className="italic">
-                Registration with the Financial Intelligence Unit (Financial
-                Reporting Center - Kenya), Appointment of a Money Laundering
-                Reporting Officer (MLRO), Reporting of Suspicious Transactions
-                to the FRC, Reporting of large cash transactions (USD 15,000) to
-                the FRC
+                {getValues().reportingObligationRequirement}
               </span>
             </Stack>
           </Grid>

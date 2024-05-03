@@ -1,5 +1,3 @@
-import { useFormContext } from "react-hook-form";
-
 import GrayBackgroundText from "./GrayBackgroundText";
 import GenInfoSection from "./_review/GenInfoSection";
 import AMLReviewSection from "./_review/AMLReviewSection";
@@ -9,8 +7,6 @@ import MonitoringReview from "./_review/MonitoringReview";
 import SignatureSection from "./_review/SignatureSection";
 
 function Review() {
-  const { getValues } = useFormContext();
-
   return (
     <div>
       <GrayBackgroundText>

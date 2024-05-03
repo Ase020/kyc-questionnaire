@@ -41,7 +41,7 @@ function GeneralInfo() {
               name="connectivity"
               control={control}
               rules={{ required: htmlText.thisFieldIsRequired }}
-              render={({ field, fieldState }) => (
+              render={({ field }) => (
                 <>
                   <Select
                     value={connectivity || null}
@@ -80,7 +80,7 @@ function GeneralInfo() {
               name="mobileWalletService"
               control={control}
               rules={{ required: htmlText.thisFieldIsRequired }}
-              render={({ field, fieldState }) => (
+              render={({ field }) => (
                 <>
                   <Select
                     value={mobileWalletService || null}
@@ -119,7 +119,7 @@ function GeneralInfo() {
             name="serviceAccessibility"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   label="Service Accessibility"
@@ -129,7 +129,7 @@ function GeneralInfo() {
                   fullWidth
                   margin="normal"
                   size="small"
-                  sx={{ marginBottom: 0 }}
+                  sx={{ marginBottom: "16px" }}
                   {...field}
                   error={Boolean(errors?.serviceAccessibility)}
                   onBlur={() => trigger("serviceAccessibility")}
@@ -159,7 +159,7 @@ function GeneralInfo() {
             name="serviceTerritory"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   label="Service Territory"
@@ -169,7 +169,7 @@ function GeneralInfo() {
                   fullWidth
                   margin="normal"
                   size="small"
-                  sx={{ marginBottom: 0 }}
+                  sx={{ marginBottom: "16px" }}
                   {...field}
                   error={Boolean(errors?.serviceTerritory)}
                   onBlur={() => trigger("serviceTerritory")}

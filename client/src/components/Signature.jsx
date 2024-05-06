@@ -1,19 +1,8 @@
-import {
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  TextField,
-} from "@mui/material";
+import { Checkbox, FormControl, FormLabel, TextField } from "@mui/material";
 import GrayBackgroundText from "./GrayBackgroundText";
 import { Controller, useFormContext } from "react-hook-form";
-import { useState } from "react";
 
 function Signature() {
-  const [needToRegister, setNeedToRegister] = useState("");
-
   const {
     control,
     formState: { errors },
@@ -27,9 +16,9 @@ function Signature() {
         <FormControl fullWidth size="small" id="outlined-helperText">
           <FormLabel>Name and Title of the signatory</FormLabel>
           <Controller
-            name="customerKYC"
+            name="name"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -57,10 +46,10 @@ function Signature() {
           }}
         >
           <Controller
-            name="needToRegister"
+            name="acknowledgement"
             control={control}
             defaultValue="Yes"
-            render={({ field, fieldState }) => <Checkbox {...field} />}
+            render={({ field }) => <Checkbox {...field} />}
           />
 
           <FormLabel>

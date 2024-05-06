@@ -15,11 +15,11 @@ import OrangeBackgroundText from "./OrangeBackgroundText";
 
 function KYCProcedures() {
   const [customerRegistered, setCustomerRegistered] = useState("");
-  const [customerKYC, setCustomerKYC] = useState("");
+  const [customerScreened, setCustomerScreened] = useState("");
   const [online, setOnline] = useState("");
   const [customerType, setCustomerType] = useState("");
-  const [dueDilligence, setDueDilligence] = useState("");
-  const [dueDilligenceDesc, setDueDilligenceDesc] = useState("");
+  const [enhancedDueDiligence, setEnhancedDueDiligence] = useState("");
+  const [beneficiaryScreened, setBeneficiaryScreened] = useState("");
 
   const {
     control,
@@ -155,7 +155,7 @@ function KYCProcedures() {
             control={control}
             defaultValue="No"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
                   onChange={(event) => setOnline(event.target.value)}
@@ -198,7 +198,7 @@ function KYCProcedures() {
             name="dueDiligence"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -233,7 +233,7 @@ function KYCProcedures() {
             control={control}
             defaultValue="Both"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
                   onChange={(event) => setCustomerType(event.target.value)}
@@ -279,17 +279,19 @@ function KYCProcedures() {
           </FormLabel>
 
           <Controller
-            name="dueDilligence"
+            name="enhancedDueDiligence"
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setDueDilligence(event.target.value)}
+                  onChange={(event) =>
+                    setEnhancedDueDiligence(event.target.value)
+                  }
                   {...field}
-                  error={Boolean(errors?.dueDilligence)}
-                  onBlur={() => trigger("dueDilligence")}
+                  error={Boolean(errors?.enhancedDueDiligence)}
+                  onBlur={() => trigger("enhancedDueDiligence")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -305,8 +307,8 @@ function KYCProcedures() {
                   </div>
                 </RadioGroup>
 
-                {errors?.dueDilligence?.message && (
-                  <FormHelperText error={Boolean(errors?.dueDilligence)}>
+                {errors?.enhancedDueDiligence?.message && (
+                  <FormHelperText error={Boolean(errors?.enhancedDueDiligence)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -322,10 +324,10 @@ function KYCProcedures() {
             due dilligence process in place:
           </FormLabel>
           <Controller
-            name="dueDilligenceDesc"
+            name="dueDiligenceDesc"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -336,11 +338,11 @@ function KYCProcedures() {
                   size="small"
                   sx={{ marginBottom: 0 }}
                   {...field}
-                  error={Boolean(errors?.dueDilligenceDesc)}
-                  onBlur={() => trigger("dueDilligenceDesc")}
+                  error={Boolean(errors?.dueDiligenceDesc)}
+                  onBlur={() => trigger("dueDiligenceDesc")}
                 />
-                {errors?.dueDilligenceDesc?.message && (
-                  <FormHelperText error={Boolean(errors?.dueDilligenceDesc)}>
+                {errors?.dueDiligenceDesc?.message && (
+                  <FormHelperText error={Boolean(errors?.dueDiligenceDesc)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -356,17 +358,17 @@ function KYCProcedures() {
           </FormLabel>
 
           <Controller
-            name="dueDilligence"
+            name="customerScreened"
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setDueDilligence(event.target.value)}
+                  onChange={(event) => setCustomerScreened(event.target.value)}
                   {...field}
-                  error={Boolean(errors?.dueDilligence)}
-                  onBlur={() => trigger("dueDilligence")}
+                  error={Boolean(errors?.customerScreened)}
+                  onBlur={() => trigger("customerScreened")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -382,8 +384,8 @@ function KYCProcedures() {
                   </div>
                 </RadioGroup>
 
-                {errors?.dueDilligence?.message && (
-                  <FormHelperText error={Boolean(errors?.dueDilligence)}>
+                {errors?.customerScreened?.message && (
+                  <FormHelperText error={Boolean(errors?.customerScreened)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -399,10 +401,10 @@ function KYCProcedures() {
             a) indicate against which lists are customers screened:
           </FormLabel>
           <Controller
-            name="dueDilligenceDesc"
+            name="screenList"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -413,11 +415,11 @@ function KYCProcedures() {
                   size="small"
                   sx={{ marginBottom: 0 }}
                   {...field}
-                  error={Boolean(errors?.dueDilligenceDesc)}
-                  onBlur={() => trigger("dueDilligenceDesc")}
+                  error={Boolean(errors?.screenList)}
+                  onBlur={() => trigger("screenList")}
                 />
-                {errors?.dueDilligenceDesc?.message && (
-                  <FormHelperText error={Boolean(errors?.dueDilligenceDesc)}>
+                {errors?.screenList?.message && (
+                  <FormHelperText error={Boolean(errors?.screenList)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -432,10 +434,10 @@ function KYCProcedures() {
             b) what is the procedure in case of a possible hit?
           </FormLabel>
           <Controller
-            name="dueDilligenceDesc"
+            name="possibleHit"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -446,11 +448,11 @@ function KYCProcedures() {
                   size="small"
                   sx={{ marginBottom: 0 }}
                   {...field}
-                  error={Boolean(errors?.dueDilligenceDesc)}
-                  onBlur={() => trigger("dueDilligenceDesc")}
+                  error={Boolean(errors?.possibleHit)}
+                  onBlur={() => trigger("possibleHit")}
                 />
-                {errors?.dueDilligenceDesc?.message && (
-                  <FormHelperText error={Boolean(errors?.dueDilligenceDesc)}>
+                {errors?.possibleHit?.message && (
+                  <FormHelperText error={Boolean(errors?.possibleHit)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -464,17 +466,17 @@ function KYCProcedures() {
           <FormLabel>7. Is the KYC process linked to a bank account?</FormLabel>
 
           <Controller
-            name="dueDilligence"
+            name="kycLinkedToBank"
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setDueDilligence(event.target.value)}
+                  onChange={(event) => setKycLinkedToBank(event.target.value)}
                   {...field}
-                  error={Boolean(errors?.dueDilligence)}
-                  onBlur={() => trigger("dueDilligence")}
+                  error={Boolean(errors?.kycLinkedToBank)}
+                  onBlur={() => trigger("kycLinkedToBank")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -490,8 +492,8 @@ function KYCProcedures() {
                   </div>
                 </RadioGroup>
 
-                {errors?.dueDilligence?.message && (
-                  <FormHelperText error={Boolean(errors?.dueDilligence)}>
+                {errors?.kycLinkedToBank?.message && (
+                  <FormHelperText error={Boolean(errors?.kycLinkedToBank)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -506,10 +508,10 @@ function KYCProcedures() {
             If <span className="font-semibold">Yes</span>, please specify:
           </FormLabel>
           <Controller
-            name="dueDilligenceDesc"
+            name="kycLinkedToBankDesc"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -520,11 +522,11 @@ function KYCProcedures() {
                   size="small"
                   sx={{ marginBottom: 0 }}
                   {...field}
-                  error={Boolean(errors?.dueDilligenceDesc)}
-                  onBlur={() => trigger("dueDilligenceDesc")}
+                  error={Boolean(errors?.kycLinkedToBankDesc)}
+                  onBlur={() => trigger("kycLinkedToBankDesc")}
                 />
-                {errors?.dueDilligenceDesc?.message && (
-                  <FormHelperText error={Boolean(errors?.dueDilligenceDesc)}>
+                {errors?.kycLinkedToBankDesc?.message && (
+                  <FormHelperText error={Boolean(errors?.kycLinkedToBankDesc)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -544,17 +546,19 @@ function KYCProcedures() {
           </FormLabel>
 
           <Controller
-            name="dueDilligence"
+            name="beneficiaryRegistered"
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setDueDilligence(event.target.value)}
+                  onChange={(event) =>
+                    setBeneficiaryRegistered(event.target.value)
+                  }
                   {...field}
-                  error={Boolean(errors?.dueDilligence)}
-                  onBlur={() => trigger("dueDilligence")}
+                  error={Boolean(errors?.beneficiaryRegistered)}
+                  onBlur={() => trigger("beneficiaryRegistered")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -570,8 +574,10 @@ function KYCProcedures() {
                   </div>
                 </RadioGroup>
 
-                {errors?.dueDilligence?.message && (
-                  <FormHelperText error={Boolean(errors?.dueDilligence)}>
+                {errors?.beneficiaryRegistered?.message && (
+                  <FormHelperText
+                    error={Boolean(errors?.beneficiaryRegistered)}
+                  >
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -587,10 +593,10 @@ function KYCProcedures() {
             registration process:
           </FormLabel>
           <Controller
-            name="dueDilligenceDesc"
+            name="beneficiaryRegistrationProcess"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -601,11 +607,13 @@ function KYCProcedures() {
                   size="small"
                   sx={{ marginBottom: 0 }}
                   {...field}
-                  error={Boolean(errors?.dueDilligenceDesc)}
-                  onBlur={() => trigger("dueDilligenceDesc")}
+                  error={Boolean(errors?.beneficiaryRegistrationProcess)}
+                  onBlur={() => trigger("beneficiaryRegistrationProcess")}
                 />
-                {errors?.dueDilligenceDesc?.message && (
-                  <FormHelperText error={Boolean(errors?.dueDilligenceDesc)}>
+                {errors?.beneficiaryRegistrationProcess?.message && (
+                  <FormHelperText
+                    error={Boolean(errors?.beneficiaryRegistrationProcess)}
+                  >
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -621,17 +629,19 @@ function KYCProcedures() {
           </FormLabel>
 
           <Controller
-            name="dueDilligence"
+            name="beneficiaryScreened"
             control={control}
             defaultValue="Yes"
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setDueDilligence(event.target.value)}
+                  onChange={(event) =>
+                    setBeneficiaryScreened(event.target.value)
+                  }
                   {...field}
-                  error={Boolean(errors?.dueDilligence)}
-                  onBlur={() => trigger("dueDilligence")}
+                  error={Boolean(errors?.beneficiaryScreened)}
+                  onBlur={() => trigger("beneficiaryScreened")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -647,8 +657,8 @@ function KYCProcedures() {
                   </div>
                 </RadioGroup>
 
-                {errors?.dueDilligence?.message && (
-                  <FormHelperText error={Boolean(errors?.dueDilligence)}>
+                {errors?.beneficiaryScreened?.message && (
+                  <FormHelperText error={Boolean(errors?.beneficiaryScreened)}>
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}
@@ -664,10 +674,10 @@ function KYCProcedures() {
             which lists are customers screened:
           </FormLabel>
           <Controller
-            name="dueDilligenceDesc"
+            name="beneficiaryScreeningList"
             control={control}
             rules={{ required: htmlText.thisFieldIsRequired }}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -678,11 +688,13 @@ function KYCProcedures() {
                   size="small"
                   sx={{ marginBottom: 0 }}
                   {...field}
-                  error={Boolean(errors?.dueDilligenceDesc)}
-                  onBlur={() => trigger("dueDilligenceDesc")}
+                  error={Boolean(errors?.beneficiaryScreeningList)}
+                  onBlur={() => trigger("beneficiaryScreeningList")}
                 />
-                {errors?.dueDilligenceDesc?.message && (
-                  <FormHelperText error={Boolean(errors?.dueDilligenceDesc)}>
+                {errors?.beneficiaryScreeningList?.message && (
+                  <FormHelperText
+                    error={Boolean(errors?.beneficiaryScreeningList)}
+                  >
                     {htmlText.thisFieldIsRequired}
                   </FormHelperText>
                 )}

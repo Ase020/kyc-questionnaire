@@ -11,7 +11,14 @@ import { Controller, useFormContext } from "react-hook-form";
 import { useState } from "react";
 
 function Monitoring() {
-  const [needToRegister, setNeedToRegister] = useState("");
+  const [complianceFilters, setComplianceFilters] = useState("");
+  const [amountLimit, setAmountLimit] = useState("");
+  const [limitDiffer, setLimitDiffer] = useState("");
+  const [limitationOfBeneficiaries, setLimitationOfBeneficiaries] =
+    useState("");
+  const [screeningProcess, setScreeningProcess] = useState("");
+  const [realtimeFilters, setRealtimeFilters] = useState("");
+  const [limitationOfWallet, setLimitationOfWallet] = useState("");
 
   const {
     control,
@@ -30,16 +37,16 @@ function Monitoring() {
           </FormLabel>
 
           <Controller
-            name="needToRegister"
+            name="complianceFilters"
             control={control}
             defaultValue="Yes"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setNeedToRegister(event.target.value)}
+                  onChange={(event) => setComplianceFilters(event.target.value)}
                   {...field}
-                  error={Boolean(errors?.needToRegister)}
-                  onBlur={() => trigger("needToRegister")}
+                  error={Boolean(errors?.complianceFilters)}
+                  onBlur={() => trigger("complianceFilters")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -64,9 +71,9 @@ function Monitoring() {
             If <span className="font-semibold">Yes</span>, describe them:
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="complianceFiltersDesc"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -88,16 +95,16 @@ function Monitoring() {
           </FormLabel>
 
           <Controller
-            name="needToRegister"
+            name="amountLimit"
             control={control}
             defaultValue="Yes"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setNeedToRegister(event.target.value)}
+                  onChange={(event) => setAmountLimit(event.target.value)}
                   {...field}
-                  error={Boolean(errors?.needToRegister)}
-                  onBlur={() => trigger("needToRegister")}
+                  error={Boolean(errors?.amountLimit)}
+                  onBlur={() => trigger("amountLimit")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -123,9 +130,9 @@ function Monitoring() {
             limits for payout/sending/both:
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="amountLimitAmt"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -149,16 +156,16 @@ function Monitoring() {
           </FormLabel>
 
           <Controller
-            name="needToRegister"
+            name="limitDiffer"
             control={control}
             defaultValue="Yes"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setNeedToRegister(event.target.value)}
+                  onChange={(event) => setLimitDiffer(event.target.value)}
                   {...field}
-                  error={Boolean(errors?.needToRegister)}
-                  onBlur={() => trigger("needToRegister")}
+                  error={Boolean(errors?.limitDiffer)}
+                  onBlur={() => trigger("limitDiffer")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -183,9 +190,9 @@ function Monitoring() {
             If <span className="font-semibold">Yes</span>, please specify:
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="limitDifferDesc"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -208,16 +215,18 @@ function Monitoring() {
           </FormLabel>
 
           <Controller
-            name="needToRegister"
+            name="limitationOfBeneficiaries"
             control={control}
             defaultValue="Yes"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setNeedToRegister(event.target.value)}
+                  onChange={(event) =>
+                    setLimitationOfBeneficiaries(event.target.value)
+                  }
                   {...field}
-                  error={Boolean(errors?.needToRegister)}
-                  onBlur={() => trigger("needToRegister")}
+                  error={Boolean(errors?.limitationOfBeneficiaries)}
+                  onBlur={() => trigger("limitationOfBeneficiaries")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -242,9 +251,9 @@ function Monitoring() {
             If <span className="font-semibold">Yes</span>, please specify:
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="limitationOfBeneficiariesDesc"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -267,16 +276,18 @@ function Monitoring() {
           </FormLabel>
 
           <Controller
-            name="needToRegister"
+            name="limitationOfWallet"
             control={control}
             defaultValue="Yes"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setNeedToRegister(event.target.value)}
+                  onChange={(event) =>
+                    setLimitationOfWallet(event.target.value)
+                  }
                   {...field}
-                  error={Boolean(errors?.needToRegister)}
-                  onBlur={() => trigger("needToRegister")}
+                  error={Boolean(errors?.limitationOfWallet)}
+                  onBlur={() => trigger("limitationOfWallet")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -301,9 +312,9 @@ function Monitoring() {
             If <span className="font-semibold">Yes</span>, please specify:
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="limitationOfWalletDesc"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -325,16 +336,16 @@ function Monitoring() {
           </FormLabel>
 
           <Controller
-            name="needToRegister"
+            name="screeningProcess"
             control={control}
             defaultValue="Yes"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setNeedToRegister(event.target.value)}
+                  onChange={(event) => setScreeningProcess(event.target.value)}
                   {...field}
-                  error={Boolean(errors?.needToRegister)}
-                  onBlur={() => trigger("needToRegister")}
+                  error={Boolean(errors?.screeningProcess)}
+                  onBlur={() => trigger("screeningProcess")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -364,9 +375,9 @@ function Monitoring() {
             :
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="potentialMatchMgt"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -388,16 +399,16 @@ function Monitoring() {
           </FormLabel>
 
           <Controller
-            name="needToRegister"
+            name="realtimeFilters"
             control={control}
             defaultValue="Yes"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setNeedToRegister(event.target.value)}
+                  onChange={(event) => setRealtimeFilters(event.target.value)}
                   {...field}
-                  error={Boolean(errors?.needToRegister)}
-                  onBlur={() => trigger("needToRegister")}
+                  error={Boolean(errors?.realtimeFilters)}
+                  onBlur={() => trigger("realtimeFilters")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -422,9 +433,9 @@ function Monitoring() {
             If <span className="font-semibold">Yes</span>, please specify:
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="realtimeFiltersDesc"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -447,16 +458,18 @@ function Monitoring() {
           </FormLabel>
 
           <Controller
-            name="needToRegister"
+            name="postTransactionalAnalysis"
             control={control}
             defaultValue="Yes"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <RadioGroup
-                  onChange={(event) => setNeedToRegister(event.target.value)}
+                  onChange={(event) =>
+                    setPostTransactionalAnalysis(event.target.value)
+                  }
                   {...field}
-                  error={Boolean(errors?.needToRegister)}
-                  onBlur={() => trigger("needToRegister")}
+                  error={Boolean(errors?.postTransactionalAnalysis)}
+                  onBlur={() => trigger("postTransactionalAnalysis")}
                 >
                   <div className="flex gap-4">
                     <FormControlLabel
@@ -481,9 +494,9 @@ function Monitoring() {
             If <span className="font-semibold">Yes</span>, please specify:
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="postTransactionalAnalysisDesc"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -505,9 +518,9 @@ function Monitoring() {
             holders?{" "}
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="typeOfMonitoring"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"

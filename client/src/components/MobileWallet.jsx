@@ -20,9 +20,9 @@ function MobileWallet() {
             <span className="font-light italic">(If applicable)</span>
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="loginProcedureSend"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -46,9 +46,9 @@ function MobileWallet() {
             <span className="font-light italic">(If applicable)</span>
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="loginProcedureReceive"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -71,9 +71,9 @@ function MobileWallet() {
             <span className="font-light italic">(In case of sending)</span>
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="fundsWithdrawn"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -96,9 +96,9 @@ function MobileWallet() {
             <span className="font-light italic">(In case of sending)</span>
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="fundsDeposited"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -121,9 +121,9 @@ function MobileWallet() {
             <span className="font-light italic">(not expired)</span>?
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="verifyBeneficiaryId"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -144,9 +144,9 @@ function MobileWallet() {
             receives/sends a transaction with Ria via Mobile Wallet?
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="printReceipt"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -169,9 +169,9 @@ function MobileWallet() {
             <span className="font-light italic">(In case of paying)</span>
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="proofOfPayment"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -193,9 +193,9 @@ function MobileWallet() {
             documents provided? For how long are records retained in the system?
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="recordRetention"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"
@@ -218,9 +218,9 @@ function MobileWallet() {
             number?
           </FormLabel>
           <Controller
-            name="customerKYC"
+            name="verifyPhoneValidity"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <>
                 <TextField
                   id="outlined-helperText"

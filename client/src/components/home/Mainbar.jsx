@@ -2,7 +2,7 @@
 import { KeyboardBackspace } from "@mui/icons-material";
 import { FormProvider, useForm } from "react-hook-form";
 import { steppersArray } from "../../constants";
-import { generalInfoValues } from "../../utils/selectValues";
+import { introValues } from "../../utils/selectValues";
 
 function Mainbar({ currentForm, setCurrentForm }) {
   const validateForm = (obj) => {
@@ -10,8 +10,8 @@ function Mainbar({ currentForm, setCurrentForm }) {
 
     if (currentForm === 0) {
       let flag = true;
-      for (let i = 0; i < generalInfoValues.length; i++) {
-        let val = obj[generalInfoValues[i]];
+      for (let i = 0; i < introValues.length; i++) {
+        let val = obj[introValues[i]];
         if (!val || val.length < 1) {
           flag = false;
         }
@@ -19,57 +19,6 @@ function Mainbar({ currentForm, setCurrentForm }) {
 
       if (!flag) return false;
     }
-    // else if (currentForm === 1) {
-    //   let flag = true;
-    //   for (let i = 0; i < aMLRegulation.length; i++) {
-    //     let val = obj[aMLRegulation[i]];
-    //     if (!val || val.length < 1) {
-    //       flag = false;
-    //     }
-    //   }
-
-    //   if (!flag) return false;
-    // } else if (currentForm === 2) {
-    //   let flag = true;
-    //   for (let i = 0; i < kYCProcedures.length; i++) {
-    //     let val = obj[kYCProcedures[i]];
-    //     if (!val || val.length < 1) {
-    //       flag = false;
-    //     }
-    //   }
-
-    //   if (!flag) return false;
-    // } else if (currentForm === 3) {
-    //   let flag = true;
-    //   for (let i = 0; i < mobileWalletCharacteristics.length; i++) {
-    //     let val = obj[mobileWalletCharacteristics[i]];
-    //     if (!val || val.length < 1) {
-    //       flag = false;
-    //     }
-    //   }
-
-    //   if (!flag) return false;
-    // } else if (currentForm === 4) {
-    //   let flag = true;
-    //   for (let i = 0; i < monitoring.length; i++) {
-    //     let val = obj[monitoring[i]];
-    //     if (!val || val.length < 1) {
-    //       flag = false;
-    //     }
-    //   }
-
-    //   if (!flag) return false;
-    // } else if (currentForm === 5) {
-    //   let flag = true;
-    //   for (let i = 0; i < authorization.length; i++) {
-    //     let val = obj[authorization[i]];
-    //     if (!val || val.length < 1) {
-    //       flag = false;
-    //     }
-    //   }
-
-    //   if (!flag) return false;
-    // }
     return true;
   };
 

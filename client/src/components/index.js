@@ -14,6 +14,7 @@ export { default as Sidebar } from "./home/Sidebar";
 
 export { default as AMLReviewSection } from "./_review/AMLReviewSection";
 export { default as GenInfoSection } from "./_review/GenInfoSection";
+export { default as IntroReview } from "./_review/IntroReview";
 export { default as KYCProceduresSection } from "./_review/KYCProceduresSection";
 export { default as MobileWalletSection } from "./_review/MobileWalletSection";
 export { default as MonitoringReview } from "./_review/MonitoringReview";

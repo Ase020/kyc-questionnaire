@@ -5,6 +5,7 @@ import KYCProceduresSection from "./_review/KYCProceduresSection";
 import MobileWalletSection from "./_review/MobileWalletSection";
 import MonitoringReview from "./_review/MonitoringReview";
 import SignatureSection from "./_review/SignatureSection";
+import IntroReview from "./_review/IntroReview";
 
 function Review() {
   return (
@@ -22,6 +23,7 @@ function Review() {
       </GrayBackgroundText>
 
       <div className="my-4">
+        <IntroReview />
         <GenInfoSection />
         <AMLReviewSection />
         <KYCProceduresSection />

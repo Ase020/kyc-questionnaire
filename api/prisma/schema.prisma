@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  // url      = "mongodb+srv://felix5olali:OOI07hdypYBjpHe7@cluster0.uhtcygh.mongodb.net/kyc-questionnaire?retryWrites=true&w=majority&appName=Cluster0"
+  url      = env("DATABASE_URL")
+}
+
+model Kyc {
+  id                             String  @id @default(auto()) @map("_id") @db.ObjectId
+  acknowledgement                Boolean
+  address                        String
+  amountLimit                    String
+  amountLimitAmt                 String?
+  beneficiaryRegistered          String
+  beneficiaryRegistrationProcess String?
+  beneficiaryScreened            String
+  beneficiaryScreeningList       String?
+  complianceFilters              String
+  complianceFiltersDesc          String?
+  connectivity                   String
+  countryOfIncorporation         String
+  customerRegistered             String
+  customerScreened               String
+  customerType                   String
+  dateOfIncorporation            String
+  dueDiligence                   String?
+  dueDiligenceDesc               String?
+  enhancedDueDiligence           String
+  fundsDeposited                 String?
+  fundsWithdrawn                 String?
+  howOften                       String?
+  incorporationNumber            String
+  kYCDescription                 String?
+  kycLinkedToBank                String
+  kycLinkedToBankDesc            String?
+  license                        String
+  licenseType                    String?
+  limitDiffer                    String
+  limitDifferDesc                String?
+  limitationOfBeneficiaries      String
+  limitationOfBeneficiariesDesc  String?
+  limitationOfWallet             String
+  limitationOfWalletDesc         String?
+  loginProcedureReceive          String?
+  loginProcedureSend             String?
+  mobileWalletService            String
+  name                           String?
+  nameOfEntity                   String
+  online                         String
+  otherLicense                   String
+  otherLicenseType               String?
+  performKYC                     String?
+  periodicReview                 String
+  policyProvided                 String
+  possibleHit                    String?
+  postTransactionalAnalysis      String
+  postTransactionalAnalysisDesc  String?
+  potentialMatchMgt              String?
+  printReceipt                   String?
+  proofOfPayment                 String?
+  realtimeFilters                String
+  realtimeFiltersDesc            String?
+  recordRetention                String?
+  reportingObligation            String
+  reportingObligationRequirement String?
+  screenList                     String?
+  screeningProcess               String
+  separateAMLPolicy              String
+  serviceAccessibility           String
+  serviceTerritory               String
+  tradingName                    String
+  typeOfMonitoring               String?
+  verifyBeneficiaryId            String?
+  verifyPhoneValidity            String?
+}
+
+model User {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  firstName String
+  lastName  String
+}

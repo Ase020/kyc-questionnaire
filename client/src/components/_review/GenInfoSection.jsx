@@ -10,7 +10,7 @@ const GenInfoSection = () => {
 
       <div className="my-8 px-8 pb-4 bg-grey-1">
         <Grid container spacing={2}>
-          <Grid xs={6} marginBlock="20px">
+          <Grid xs={6} item marginBlock="20px">
             <Stack direction="column">
               <h3 className="text-sm text-blue-289 font-semibold">
                 Connectivity
@@ -19,7 +19,7 @@ const GenInfoSection = () => {
             </Stack>
           </Grid>
 
-          <Grid xs={6} marginBlock="20px">
+          <Grid xs={6} item marginBlock="20px">
             <Stack direction="column">
               <h3 className="text-sm text-blue-289 font-semibold">
                 Mobile Wallet Service

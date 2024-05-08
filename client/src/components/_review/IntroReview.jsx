@@ -9,7 +9,7 @@ function IntroReview() {
 
       <div className="my-8 px-8 pb-4 bg-grey-1">
         <Grid container spacing={2}>
-          <Grid xs={6} marginBlock="20px">
+          <Grid xs={6} item marginBlock="20px">
             <Stack direction="column">
               <h3 className="text-sm text-blue-289 font-semibold">
                 Name of the Entity
@@ -18,7 +18,7 @@ function IntroReview() {
             </Stack>
           </Grid>
 
-          <Grid xs={6} marginBlock="20px">
+          <Grid xs={6} item marginBlock="20px">
             <Stack direction="column">
               <h3 className="text-sm text-blue-289 font-semibold">
                 Trading Name
@@ -29,7 +29,7 @@ function IntroReview() {
         </Grid>
 
         <Grid container spacing={2}>
-          <Grid xs={6} marginBlock="12px">
+          <Grid xs={6} item marginBlock="12px">
             <Stack direction="column">
               <h3 className="text-sm text-blue-289 font-semibold">
                 Country of Incorporation
@@ -40,7 +40,7 @@ function IntroReview() {
             </Stack>
           </Grid>
 
-          <Grid xs={6} marginBlock="12px">
+          <Grid xs={6} item marginBlock="12px">
             <Stack direction="column">
               <h3 className="text-sm text-blue-289 font-semibold">
                 Incorporation/Registration number
@@ -49,7 +49,7 @@ function IntroReview() {
             </Stack>
           </Grid>
 
-          <Grid xs={6} marginBlock="12px">
+          <Grid xs={6} item marginBlock="12px">
             <Stack direction="column">
               <h3 className="text-sm text-blue-289 font-semibold">
                 Registered address

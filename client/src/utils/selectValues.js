@@ -1,3 +1,12 @@
+export const introValues = [
+  "nameOfEntity",
+  "tradingName",
+  "countryOfIncorporation",
+  "dateOfIncorporation",
+  "incorporationNumber",
+  "address",
+];
+
 export const generalInfoValues = [
   "connectivity",
   "mobileWalletService",

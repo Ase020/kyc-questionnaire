@@ -2,14 +2,7 @@
 import { KeyboardBackspace } from "@mui/icons-material";
 import { FormProvider, useForm } from "react-hook-form";
 import { steppersArray } from "../../constants";
-import {
-  aMLRegulation,
-  authorization,
-  generalInfoValues,
-  kYCProcedures,
-  mobileWalletCharacteristics,
-  monitoring,
-} from "../../utils/selectValues";
+import { generalInfoValues } from "../../utils/selectValues";
 
 function Mainbar({ currentForm, setCurrentForm }) {
   const validateForm = (obj) => {

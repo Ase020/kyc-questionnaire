@@ -3,6 +3,7 @@ import { KeyboardBackspace } from "@mui/icons-material";
 import { FormProvider, useForm } from "react-hook-form";
 import { steppersArray } from "../../constants";
 import { introValues } from "../../utils/selectValues";
+import apiRequest from "../../utils/apiRequest";
 
 function Mainbar({ currentForm, setCurrentForm }) {
   const validateForm = (obj) => {
@@ -31,9 +32,15 @@ function Mainbar({ currentForm, setCurrentForm }) {
     }
   };
 
-  const handleConfirm = (e) => {
+  const handleConfirm = async (e) => {
     e.preventDefault();
-    console.log("Methods: ", methods.getValues());
+
+    try {
+      const newKyc = await apiRequest.post("/", methods.getValues());
+      console.log("newKyc: ", newKyc.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
   };
 
   const handleContinue = (e) => {

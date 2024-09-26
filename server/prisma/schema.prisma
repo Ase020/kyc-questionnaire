@@ -13,8 +13,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Organisation {
+  id                        Int                     @id @default(autoincrement())
+  entityInfoId              Int                     @unique
+  entityInfo                EntityInfo              @relation(fields: [entityInfoId], references: [id])
+  ownershipDetailId         Int                     @unique
+  ownershipDetail           OwnershipDetail         @relation(fields: [ownershipDetailId], references: [id])
+  aMLPoliciesProcedureId    Int                     @unique
+  aMLPoliciesProcedure      AMLPoliciesProcedure    @relation(fields: [aMLPoliciesProcedureId], references: [id])
+  riskAssessmentId          Int                     @unique
+  riskAssessment            RiskAssessment          @relation(fields: [riskAssessmentId], references: [id])
+  KycBankId                 Int                     @unique
+  KycBank                   KycBank                 @relation(fields: [KycBankId], references: [id])
+  KycNonBank                Int?
+  agentId                   Int                     @unique
+  agent                     Agent                   @relation(fields: [agentId], references: [id])
+  aMLTrainingId             Int                     @unique
+  aMLTraining               AMLTraining             @relation(fields: [aMLTrainingId], references: [id])
+  natureOfCustomerId        Int                     @unique
+  natureOfCustomer          NatureOfCustomer        @relation(fields: [natureOfCustomerId], references: [id])
+  declarationId             Int                     @unique
+  declaration               Declaration             @relation(fields: [declarationId], references: [id])
+  confirmationOfRelianceId  Int                     @unique
+  confirmationOfReliance    ConfirmationOfReliance  @relation(fields: [confirmationOfRelianceId], references: [id])
+  docRequirementChecklistId Int                     @unique
+  docRequirementChecklist   DocRequirementChecklist @relation(fields: [docRequirementChecklistId], references: [id])
+}
+
 model EntityInfo {
-  id                     Int       @id @default(autoincrement())
+  id                     Int           @id @default(autoincrement())
   name                   String
   tradingName            String?
   countryOfIncorporation String
@@ -26,71 +53,27 @@ model EntityInfo {
   licenseFrom            DateTime?
   licenseTo              DateTime?
   registeredAddress      String
-  numberOfBranches       Int       @default(1)
+  numberOfBranches       Int           @default(1)
   jurisdiction           String?
-
-  riskAssessmentId Int?
-  RiskAssessment   RiskAssessment?
-
-  agentId Int?
-  Agent   Agent?
-
-  natureOfCustomerId Int?
-  NatureOfCustomer   NatureOfCustomer?
-
-  kycBankId Int?
-  KycBank   KycBank?
-
-  kycNonBankId Int?
-
-  amlTrainingId Int?
-  AMLTraining   AMLTraining?
-
-  declarationId Int?
-  Declaration   Declaration?
-
-  confirmationOfRelianceId Int?
-  ConfirmationOfReliance   ConfirmationOfReliance?
-
-  ownershipDetailId Int?
-  OwnershipDetail   OwnershipDetail?
+  organisation           Organisation?
 }
 
-model DesignatedOfficer {
-  id          Int    @id @default(autoincrement())
-  name        String
-  designation String
-  email       String
-  phoneNumber String
+model OwnershipDetail {
+  id                 Int     @id @default(autoincrement())
+  publiclyTraded     Boolean
+  exchangeTradedOn   String?
+  privatelyOwned     Boolean
+  shareholderDetails String?
+  ownershipChartsUrl String?
+  pepsAssociated     Boolean
 
-  aMLPoliciesProcedureId Int                  @unique
-  aMLPoliciesProcedure   AMLPoliciesProcedure @relation(fields: [aMLPoliciesProcedureId], references: [id])
-}
-
-model PolicyComponent {
-  id                          Int     @id @default(autoincrement())
-  cashReporting               Boolean
-  cdd                         Boolean
-  edd                         Boolean
-  beneficialOwnership         Boolean
-  independentTesting          Boolean
-  periodicReview              Boolean
-  policiesAndProcedures       Boolean
-  riskAssessment              Boolean
-  sanctionsScreening          Boolean
-  assetsFreezing              Boolean
-  pepFreezing                 Boolean
-  adverseInfoFreezing         Boolean
-  suspiciousActivityScreening Boolean
-  trainingAndEducation        Boolean
-  transactionMonitoring       Boolean
-
-  aMLPoliciesProcedureId Int                  @unique
-  aMLPoliciesProcedure   AMLPoliciesProcedure @relation(fields: [aMLPoliciesProcedureId], references: [id])
+  ownershipMemberDetail OwnershipMemberDetail[]
+  pepMemberDetail       PepMemberDetail[]
+  organisation          Organisation?
 }
 
 model AMLPoliciesProcedure {
-  id                                 Int      @id @default(autoincrement())
+  id                                 Int           @id @default(autoincrement())
   suspiciousActivityReporting        Boolean?
   aMLLaws                            Boolean
   adverseInfoScreening               Boolean?
@@ -125,61 +108,48 @@ model AMLPoliciesProcedure {
   deniedLicenceDetails               String?
   reasonablePolicies                 Boolean
   reasonablePoliciesDetails          String?
-
-  designatedOfficerId Int?
-  designatedOfficer   DesignatedOfficer?
-
-  policyComponentId Int?
-  PolicyComponent   PolicyComponent?
-
-  externalAuditorId Int?
-  externalAuditor   ExternalAuditor[]
-}
-
-model ExternalAuditor {
-  id              Int      @id @default(autoincrement())
-  name            String
-  lastReviewDate  DateTime
-  recentReportUrl String
-
-  aMLPoliciesProcedureId Int
-  aMLPoliciesProcedure   AMLPoliciesProcedure @relation(fields: [aMLPoliciesProcedureId], references: [id])
+  organisation                       Organisation?
 }
 
 model RiskAssessment {
-  id                         Int     @id @default(autoincrement())
+  id                         Int           @id @default(autoincrement())
   riskBasedAssessment        Boolean
   riskBasedAssessmentDetails String?
   appropriateLevel           Boolean
   appropriateLevelDetails    String?
+  organisation               Organisation?
+}
 
-  entityInfoId Int        @unique
-  entityInfo   EntityInfo @relation(fields: [entityInfoId], references: [id])
+model KycBank {
+  id                            Int           @id @default(autoincrement())
+  process                       Boolean
+  sanctionScreening             Boolean
+  partnersAMLPolicies           Boolean
+  dueDiligenceMeasures          Boolean
+  dueDiligenceDetails           String?
+  riskBasedAssessmentCompletion Boolean
+  organisation                  Organisation?
 }
 
 model Agent {
-  id                   Int     @id @default(autoincrement())
+  id                   Int           @id @default(autoincrement())
   appointAgents        Boolean
   appointAgentsDetails String?
-
-  entityInfoId Int        @unique
-  entityInfo   EntityInfo @relation(fields: [entityInfoId], references: [id])
+  organisation         Organisation?
 }
 
 model AMLTraining {
-  id                  Int      @id @default(autoincrement())
+  id                  Int           @id @default(autoincrement())
   training            Boolean
   trainingRecords     Boolean
   communicateAML      Boolean
   employThirdParty    Boolean
   thirdPartyForegoing Boolean?
-
-  entityInfoId Int        @unique
-  entityInfo   EntityInfo @relation(fields: [entityInfoId], references: [id])
+  organisation        Organisation?
 }
 
 model NatureOfCustomer {
-  id                         Int     @id @default(autoincrement())
+  id                         Int           @id @default(autoincrement())
   banks                      Float
   moneyService               Float
   individual                 Float
@@ -193,90 +163,29 @@ model NatureOfCustomer {
   operationsFATFDetails      String?
   notLicensedPartners        Boolean
   notLicensedPartnersDetails String?
-
-  entityInfoId Int        @unique
-  entityInfo   EntityInfo @relation(fields: [entityInfoId], references: [id])
+  organisation               Organisation?
 }
 
 model Declaration {
-  id                       Int     @id @default(autoincrement())
+  id                       Int           @id @default(autoincrement())
   ownerDeclaredUnfit       Boolean
   declaredUnfitDetails     String?
   declaredUnfitDetailsUrl  String?
   ownerSuspended           Boolean
   ownerSuspendedDetails    String?
   ownerSuspendedDetailsUrl String?
-
-  entityInfoId Int        @unique
-  entityInfo   EntityInfo @relation(fields: [entityInfoId], references: [id])
+  organisation             Organisation?
 }
 
 model ConfirmationOfReliance {
-  id                  Int      @id @default(autoincrement())
+  id                  Int           @id @default(autoincrement())
   orgName             String
   tradingName         String
   authorizedSignatory String
   designation         String
   email               String
   date                DateTime
-
-  entityInfoId Int        @unique
-  entityInfo   EntityInfo @relation(fields: [entityInfoId], references: [id])
-}
-
-model OwnershipDetail {
-  id                    Int                     @id @default(autoincrement())
-  publiclyTraded        Boolean
-  exchangeTradedOn      String?
-  privatelyOwned        Boolean
-  shareholderDetails    String?
-  ownershipChartsUrl    String?
-  pepsAssociated        Boolean
-  entityInfoId          Int                     @unique
-  entityInfo            EntityInfo              @relation(fields: [entityInfoId], references: [id])
-  OwnershipMemberDetail OwnershipMemberDetail[]
-  PepMemberDetail       PepMemberDetail[]
-}
-
-model KycBank {
-  id                            Int     @id @default(autoincrement())
-  process                       Boolean
-  sanctionScreening             Boolean
-  partnersAMLPolicies           Boolean
-  dueDiligenceMeasures          Boolean
-  dueDiligenceDetails           String?
-  riskBasedAssessmentCompletion Boolean
-
-  entityInfoId Int        @unique
-  entityInfo   EntityInfo @relation(fields: [entityInfoId], references: [id])
-}
-
-model OwnershipMemberDetail {
-  id             Int             @id @default(autoincrement())
-  fullName       String
-  idDocType      String
-  idDocNumber    String
-  residence      String
-  nationality    String
-  designation    String
-  pepDesignation Boolean
-  attachmentsUrl String
-  ownershipId    Int
-  ownership      OwnershipDetail @relation(fields: [ownershipId], references: [id])
-}
-
-model PepMemberDetail {
-  id             Int             @id @default(autoincrement())
-  fullName       String
-  idDocType      String
-  idDocNumber    String
-  residence      String
-  nationality    String
-  designation    String
-  pepDesignation Boolean         @default(true)
-  attachmentsUrl String
-  ownershipId    Int
-  ownership      OwnershipDetail @relation(fields: [ownershipId], references: [id])
+  organisation        Organisation?
 }
 
 model DocRequirementChecklist {
@@ -309,6 +218,70 @@ model DocRequirementChecklist {
   latestFinStatementUrl           String?
   latestAudit                     Boolean
   latestAuditUrl                  String?
+  organisation                    Organisation?
+}
+
+model DesignatedOfficer {
+  id          Int    @id @default(autoincrement())
+  name        String
+  designation String
+  email       String
+  phoneNumber String
+}
+
+model PolicyComponent {
+  id                          Int     @id @default(autoincrement())
+  cashReporting               Boolean
+  cdd                         Boolean
+  edd                         Boolean
+  beneficialOwnership         Boolean
+  independentTesting          Boolean
+  periodicReview              Boolean
+  policiesAndProcedures       Boolean
+  riskAssessment              Boolean
+  sanctionsScreening          Boolean
+  assetsFreezing              Boolean
+  pepFreezing                 Boolean
+  adverseInfoFreezing         Boolean
+  suspiciousActivityScreening Boolean
+  trainingAndEducation        Boolean
+  transactionMonitoring       Boolean
+}
+
+model ExternalAuditor {
+  id              Int      @id @default(autoincrement())
+  name            String
+  lastReviewDate  DateTime
+  recentReportUrl String
+}
+
+model OwnershipMemberDetail {
+  id             Int     @id @default(autoincrement())
+  fullName       String
+  idDocType      String
+  idDocNumber    String
+  residence      String
+  nationality    String
+  designation    String
+  pepDesignation Boolean
+  attachmentsUrl String
+
+  ownershipDetailId Int?
+  OwnershipDetail   OwnershipDetail? @relation(fields: [ownershipDetailId], references: [id])
+}
+
+model PepMemberDetail {
+  id                Int              @id @default(autoincrement())
+  fullName          String
+  idDocType         String
+  idDocNumber       String
+  residence         String
+  nationality       String
+  designation       String
+  pepDesignation    Boolean          @default(true)
+  attachmentsUrl    String
+  ownershipDetailId Int?
+  OwnershipDetail   OwnershipDetail? @relation(fields: [ownershipDetailId], references: [id])
 }
 
 model ShareholderID {

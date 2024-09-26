@@ -109,6 +109,15 @@ model AMLPoliciesProcedure {
   reasonablePolicies                 Boolean
   reasonablePoliciesDetails          String?
   organisation                       Organisation?
+
+  externalAuditorId Int             @unique
+  externalAuditor   ExternalAuditor @relation(fields: [externalAuditorId], references: [id])
+
+  designatedOfficerId Int               @unique
+  designatedOfficer   DesignatedOfficer @relation(fields: [designatedOfficerId], references: [id])
+
+  policyComponentId Int             @unique
+  policyComponent   PolicyComponent @relation(fields: [policyComponentId], references: [id])
 }
 
 model RiskAssessment {
@@ -227,6 +236,8 @@ model DesignatedOfficer {
   designation String
   email       String
   phoneNumber String
+
+  aMLPoliciesProcedure AMLPoliciesProcedure?
 }
 
 model PolicyComponent {
@@ -246,6 +257,8 @@ model PolicyComponent {
   suspiciousActivityScreening Boolean
   trainingAndEducation        Boolean
   transactionMonitoring       Boolean
+
+  aMLPoliciesProcedure AMLPoliciesProcedure?
 }
 
 model ExternalAuditor {
@@ -253,6 +266,8 @@ model ExternalAuditor {
   name            String
   lastReviewDate  DateTime
   recentReportUrl String
+
+  aMLPoliciesProcedure AMLPoliciesProcedure?
 }
 
 model OwnershipMemberDetail {
